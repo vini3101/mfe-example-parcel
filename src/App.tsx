@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
+// @ts-ignore
+import { listenEvent } from '@mfe/utils'
 
 const App = () => { 
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
-    window.addEventListener('@mfe/react-single/todo/add-task', (event: any) => {
+    listenEvent('@mfe/react-single/todo/add-task', (event: any) => {
       setTasks(oldTasks => [...oldTasks, event.detail])
     })
   }, [])
